@@ -3,10 +3,7 @@
 <input data-bind="value: newTask" />
 <button data-bind="click: createTask" class="btn">Create</button>
 
-<ul data-bind="foreach: tasks">
-  <li>
-    <span data-bind="text: content"></span>
-    <span data-bind="text: created_at"></span>
-    <a href="#" data-bind="click: $root.destroy">Remove</a>
+<ul class="unstyled" data-bind="foreach: tasks">
+  <li data-bind="editableTask: true">
   </li>
 </ul>
