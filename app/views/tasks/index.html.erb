@@ -1,25 +1,12 @@
 <h1>Listing tasks</h1>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Done</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<input data-bind="value: newTask" />
+<button data-bind="click: createTask" class="btn">Create</button>
 
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.content %></td>
-    <td><%= task.done %></td>
-    <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Task', new_task_path %>
+<ul data-bind="foreach: tasks">
+  <li>
+    <span data-bind="text: content"></span>
+    <span data-bind="text: created_at"></span>
+    <a href="#" data-bind="click: $root.destroy">Remove</a>
+  </li>
+</ul>
